@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101" namespace="http://www.flowable.org/dmn"
+             name="AmountDecisionTable">
+    <decision id="AmountDecisionTable" name="AmountDecisionTable">
+        <decisionTable hitPolicy="UNIQUE">
+            <input label="Amount">
+                <inputExpression id="input_xuKQw" typeRef="number">
+                    <text><![CDATA[amount]]></text>
+                </inputExpression>
+            </input>
+            <input label="Status">
+                <inputExpression id="input_pTaFm" typeRef="string">
+                    <text><![CDATA[status]]></text>
+                </inputExpression>
+            </input>
+            <output id="output_mn9YC" label="Discount" name="output_1" typeRef="number"/>
+            <rule>
+                <inputEntry id="inputEntry_9Hq6H">
+                    <text><![CDATA[<1000]]></text>
+                </inputEntry>
+                <inputEntry id="inputEntry_ojgK0">
+                    <text><![CDATA["silver"]]></text>
+                </inputEntry>
+                <outputEntry id="outputEntry_mGaIB">
+                    <text><![CDATA[10]]></text>
+                </outputEntry>
+            </rule>
+            <rule>
+                <inputEntry id="inputEntry_ETlCQ">
+                    <text><![CDATA[<1000]]></text>
+                </inputEntry>
+                <inputEntry id="inputEntry_463ls">
+                    <text><![CDATA["gold"]]></text>
+                </inputEntry>
+                <outputEntry id="outputEntry_cK6bv">
+                    <text><![CDATA[20]]></text>
+                </outputEntry>
+            </rule>
+            <rule>
+                <inputEntry id="inputEntry_1gyUR">
+                    <text><![CDATA[>=1000]]></text>
+                </inputEntry>
+                <inputEntry id="inputEntry_25CNb">
+                    <text><![CDATA["silver"]]></text>
+                </inputEntry>
+                <outputEntry id="outputEntry_bj23F">
+                    <text><![CDATA[30]]></text>
+                </outputEntry>
+            </rule>
+            <rule>
+                <inputEntry id="inputEntry_Fx7UL">
+                    <text><![CDATA[>=1000]]></text>
+                </inputEntry>
+                <inputEntry id="inputEntry_26ZeY">
+                    <text><![CDATA["gold"]]></text>
+                </inputEntry>
+                <outputEntry id="outputEntry_LRItT">
+                    <text><![CDATA[40]]></text>
+                </outputEntry>
+            </rule>
+        </decisionTable>
+    </decision>
+</definitions>

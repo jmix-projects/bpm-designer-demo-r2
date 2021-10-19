@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://jmixInitScreen.caption">
+    <layout>
+        <buttonsPanel>
+            <button id="startProcessBtn" caption="Start Process"/>
+            <button id="rejectBtn" caption="Reject"/>
+        </buttonsPanel>
+    </layout>
+</window>

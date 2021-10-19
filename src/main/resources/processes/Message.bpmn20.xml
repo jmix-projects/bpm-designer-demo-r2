@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="message" name="Message" isExecutable="true">
+    <startEvent id="messageStartEvent" name="">
+      <outgoing>Flow_0jm9c9r</outgoing>
+      <messageEventDefinition id="MessageEventDefinition_05u5u9m" />
+    </startEvent>
+    <task id="Activity_0zbxhzp">
+      <incoming>Flow_0jm9c9r</incoming>
+      <outgoing>Flow_1av1rsm</outgoing>
+    </task>
+    <sequenceFlow id="Flow_0jm9c9r" sourceRef="messageStartEvent" targetRef="Activity_0zbxhzp" />
+    <boundaryEvent id="messageBoundaryEvent" attachedToRef="Activity_0zbxhzp">
+      <messageEventDefinition id="MessageEventDefinition_1muez89" />
+    </boundaryEvent>
+    <sequenceFlow id="Flow_1av1rsm" sourceRef="Activity_0zbxhzp" targetRef="intermediateCatchEvent" />
+    <intermediateCatchEvent id="intermediateCatchEvent">
+      <incoming>Flow_1av1rsm</incoming>
+      <messageEventDefinition id="MessageEventDefinition_0cv4wq2" />
+    </intermediateCatchEvent>
+  </process>
+  <message id="message1" name="message1" />
+  <message id="message2" name="message2" />
+  <message id="message3" name="message3" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="message">
+      <bpmndi:BPMNEdge id="Flow_0jm9c9r_di" bpmnElement="Flow_0jm9c9r">
+        <omgdi:waypoint x="186" y="168" />
+        <omgdi:waypoint x="240" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1av1rsm_di" bpmnElement="Flow_1av1rsm">
+        <omgdi:waypoint x="340" y="168" />
+        <omgdi:waypoint x="402" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0ino0xq_di" bpmnElement="messageStartEvent">
+        <omgdc:Bounds x="150" y="150" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="125" y="193" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zbxhzp_di" bpmnElement="Activity_0zbxhzp">
+        <omgdc:Bounds x="240" y="128" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qm4muw_di" bpmnElement="intermediateCatchEvent">
+        <omgdc:Bounds x="402" y="150" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qizri1_di" bpmnElement="messageBoundaryEvent">
+        <omgdc:Bounds x="272" y="190" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

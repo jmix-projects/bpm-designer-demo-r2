@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <collaboration id="Collaboration_0fcrigi">
+    <participant id="Participant_17namlr" name="Pool" processRef="pool" />
+  </collaboration>
+  <process id="pool" name="Pool" isExecutable="true">
+    <laneSet id="LaneSet_1t7aorn">
+      <lane id="Lane_0hf0dq5">
+        <flowNodeRef>startEvent1</flowNodeRef>
+      </lane>
+    </laneSet>
+    <startEvent id="startEvent1">
+      <extensionElements>
+        <jmix:formData type="input-dialog" openMode="DIALOG">
+          <jmix:formFields>
+            <jmix:formField id="user" caption="User" type="entity" editable="true" required="false">
+              <jmix:formFieldProperty name="uiComponent" value="ComboBox" />
+              <jmix:formFieldProperty name="entityName" value="bpmr2_User" />
+            </jmix:formField>
+          </jmix:formFields>
+        </jmix:formData>
+      </extensionElements>
+    </startEvent>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="Collaboration_0fcrigi">
+      <bpmndi:BPMNShape id="Participant_17namlr_di" bpmnElement="Participant_17namlr" isHorizontal="true">
+        <omgdc:Bounds x="100" y="110" width="600" height="370" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0hf0dq5_di" bpmnElement="Lane_0hf0dq5" isHorizontal="true">
+        <omgdc:Bounds x="130" y="110" width="570" height="370" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

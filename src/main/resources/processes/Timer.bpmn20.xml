@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="timer" name="Timer" isExecutable="true">
+    <startEvent id="startEvent1">
+      <extensionElements>
+        <jmix:formData type="input-dialog" openMode="DIALOG">
+          <jmix:formFields>
+            <jmix:formField id="endDate" caption="End date" type="date" editable="true" required="false" />
+          </jmix:formFields>
+        </jmix:formData>
+      </extensionElements>
+      <outgoing>Flow_11vr8hk</outgoing>
+      <timerEventDefinition id="TimerEventDefinition_0zghq5y" />
+    </startEvent>
+    <task id="Activity_0qhse63">
+      <incoming>Flow_11vr8hk</incoming>
+      <outgoing>Flow_0tshu0s</outgoing>
+    </task>
+    <boundaryEvent id="boundatyTimer" attachedToRef="Activity_0qhse63">
+      <timerEventDefinition id="TimerEventDefinition_1f82x83" />
+    </boundaryEvent>
+    <sequenceFlow id="Flow_11vr8hk" sourceRef="startEvent1" targetRef="Activity_0qhse63" />
+    <intermediateCatchEvent id="intermediateCatchEventTimer">
+      <incoming>Flow_0tshu0s</incoming>
+      <timerEventDefinition id="TimerEventDefinition_0sfyfji" />
+    </intermediateCatchEvent>
+    <sequenceFlow id="Flow_0tshu0s" sourceRef="Activity_0qhse63" targetRef="intermediateCatchEventTimer" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="timer">
+      <bpmndi:BPMNEdge id="Flow_0tshu0s_di" bpmnElement="Flow_0tshu0s">
+        <omgdi:waypoint x="400" y="180" />
+        <omgdi:waypoint x="491" y="180" />
+        <omgdi:waypoint x="491" y="80" />
+        <omgdi:waypoint x="582" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11vr8hk_di" bpmnElement="Flow_11vr8hk">
+        <omgdi:waypoint x="158" y="180" />
+        <omgdi:waypoint x="300" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1ouujkz_di" bpmnElement="startEvent1">
+        <omgdc:Bounds x="122" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qhse63_di" bpmnElement="Activity_0qhse63">
+        <omgdc:Bounds x="300" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vhfcwk_di" bpmnElement="intermediateCatchEventTimer">
+        <omgdc:Bounds x="582" y="62" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lftxh8_di" bpmnElement="boundatyTimer">
+        <omgdc:Bounds x="332" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

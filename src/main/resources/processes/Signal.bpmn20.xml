@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="signal" name="Signal" isExecutable="true">
+    <task id="Activity_0qvb8hr">
+      <incoming>Flow_1ca6j6o</incoming>
+      <outgoing>Flow_0u3c9mf</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1ca6j6o" sourceRef="startEvent1" targetRef="Activity_0qvb8hr" />
+    <boundaryEvent id="signalBoundaryEvent" name="" attachedToRef="Activity_0qvb8hr">
+      <signalEventDefinition id="SignalEventDefinition_03vlrf5" />
+    </boundaryEvent>
+    <sequenceFlow id="Flow_0u3c9mf" sourceRef="Activity_0qvb8hr" targetRef="IntermediateCatchEvent" />
+    <intermediateCatchEvent id="IntermediateCatchEvent" name="">
+      <incoming>Flow_0u3c9mf</incoming>
+      <outgoing>Flow_1lrxs6v</outgoing>
+      <signalEventDefinition id="SignalEventDefinition_1jnybjh" />
+    </intermediateCatchEvent>
+    <sequenceFlow id="Flow_1lrxs6v" sourceRef="IntermediateCatchEvent" targetRef="intermediateThrowEvent" />
+    <intermediateThrowEvent id="intermediateThrowEvent" name="">
+      <incoming>Flow_1lrxs6v</incoming>
+      <signalEventDefinition id="SignalEventDefinition_08g55z9" />
+    </intermediateThrowEvent>
+    <startEvent id="startEvent1">
+      <outgoing>Flow_1ca6j6o</outgoing>
+    </startEvent>
+  </process>
+  <signal id="first" name="first" flowable:scope="global" />
+  <signal id="second" name="second" flowable:scope="global" />
+  <signal id="third" name="third" flowable:scope="global" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="signal">
+      <bpmndi:BPMNEdge id="Flow_1lrxs6v_di" bpmnElement="Flow_1lrxs6v">
+        <omgdi:waypoint x="438" y="168" />
+        <omgdi:waypoint x="502" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0u3c9mf_di" bpmnElement="Flow_0u3c9mf">
+        <omgdi:waypoint x="340" y="168" />
+        <omgdi:waypoint x="402" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ca6j6o_di" bpmnElement="Flow_1ca6j6o">
+        <omgdi:waypoint x="186" y="168" />
+        <omgdi:waypoint x="240" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0qvb8hr_di" bpmnElement="Activity_0qvb8hr">
+        <omgdc:Bounds x="240" y="128" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0lyzddf_di" bpmnElement="IntermediateCatchEvent">
+        <omgdc:Bounds x="402" y="150" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="378" y="193" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jnkfck_di" bpmnElement="intermediateThrowEvent">
+        <omgdc:Bounds x="502" y="150" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="481" y="193" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ha1433_di" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1aec4lw_di" bpmnElement="signalBoundaryEvent">
+        <omgdc:Bounds x="272" y="190" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="247" y="233" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
