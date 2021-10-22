@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="tasklistener" name="TaskListener" isExecutable="true">
+    <extensionElements>
+      <jmix:conditionDetails conditionSource="userTaskOutcome" />
+    </extensionElements>
+    <startEvent id="startEvent1">
+      <outgoing>Flow_1hmmg6o</outgoing>
+    </startEvent>
+    <sequenceFlow id="Flow_1hmmg6o" sourceRef="startEvent1" targetRef="Activity_1pco3cm" />
+    <userTask id="Activity_1pco3cm" name="UserTask" flowable:assignee="" jmix:assigneeSource="expression" jmix:assigneeValue="">
+      <extensionElements>
+        <jmix:conditionDetails conditionSource="userTaskOutcome" />
+      </extensionElements>
+      <incoming>Flow_1hmmg6o</incoming>
+      <outgoing>Flow_133xqgd</outgoing>
+    </userTask>
+    <endEvent id="Event_12a4qjz">
+      <extensionElements>
+        <jmix:conditionDetails conditionSource="userTaskOutcome" />
+      </extensionElements>
+      <incoming>Flow_133xqgd</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_133xqgd" sourceRef="Activity_1pco3cm" targetRef="Event_12a4qjz" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="tasklistener">
+      <bpmndi:BPMNEdge id="Flow_1hmmg6o_di" bpmnElement="Flow_1hmmg6o">
+        <omgdi:waypoint x="180" y="165" />
+        <omgdi:waypoint x="230" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_133xqgd_di" bpmnElement="Flow_133xqgd">
+        <omgdi:waypoint x="330" y="165" />
+        <omgdi:waypoint x="382" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nlmyz5_di" bpmnElement="Activity_1pco3cm">
+        <omgdc:Bounds x="230" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12a4qjz_di" bpmnElement="Event_12a4qjz">
+        <omgdc:Bounds x="382" y="147" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

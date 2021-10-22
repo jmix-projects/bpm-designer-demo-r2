@@ -13,7 +13,6 @@ public class TaskCustomListener implements org.flowable.engine.delegate.TaskList
     @Override
 
     public void notify(DelegateTask delegateTask) {
-
         ScriptingEngines scriptingEngines = CommandContextUtil.getProcessEngineConfiguration().getScriptingEngines();
         Object result = scriptingEngines.evaluate(value.getExpressionText(), language.getExpressionText(), delegateTask, autoStoreVariables);
 

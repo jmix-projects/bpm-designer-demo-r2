@@ -13,17 +13,9 @@ import io.jmix.ui.screen.UiDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ProcessForm(
-        outcomes = {
-                @Outcome(id = "approve"),
-                @Outcome(id = "reject")
-        },
         params = {
-                @Param(name = "variableName"),
-                @Param(name = "entityPickerCaption")
-        },
-        outputVariables = {
-                @OutputVariable(name = "out boolean", type = boolean.class),
-                @OutputVariable(name = "out double", type = double.class),
+                @Param(name = "paramFirst"),
+                @Param(name = "paramSecond")
         }
 )
 @UiController("bpmr2_JmixInitScreen")
