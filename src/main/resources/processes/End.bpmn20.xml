@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="end" name="End" isExecutable="true">
+    <startEvent id="startEvent1">
+      <outgoing>Flow_0bwqvsh</outgoing>
+    </startEvent>
+    <exclusiveGateway id="Gateway_0yj3w9z">
+      <incoming>Flow_0bwqvsh</incoming>
+      <outgoing>Flow_0l9e03x</outgoing>
+      <outgoing>Flow_0i41wb3</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="Flow_0bwqvsh" sourceRef="startEvent1" targetRef="Gateway_0yj3w9z" />
+    <sequenceFlow id="Flow_0l9e03x" sourceRef="Gateway_0yj3w9z" targetRef="errorEndEvent" />
+    <endEvent id="errorEndEvent" name="">
+      <incoming>Flow_0l9e03x</incoming>
+      <errorEventDefinition id="ErrorEventDefinition_11fdnb7" />
+    </endEvent>
+    <exclusiveGateway id="Gateway_1rvsd4k">
+      <incoming>Flow_0i41wb3</incoming>
+      <outgoing>Flow_1i0w9kp</outgoing>
+      <outgoing>Flow_05s6hmz</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="Flow_0i41wb3" sourceRef="Gateway_0yj3w9z" targetRef="Gateway_1rvsd4k" />
+    <sequenceFlow id="Flow_1i0w9kp" sourceRef="Gateway_1rvsd4k" targetRef="terminateEndEvent" />
+    <endEvent id="EndEvent" name="">
+      <incoming>Flow_05s6hmz</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_05s6hmz" sourceRef="Gateway_1rvsd4k" targetRef="EndEvent" />
+    <endEvent id="terminateEndEvent">
+      <incoming>Flow_1i0w9kp</incoming>
+      <terminateEventDefinition id="TerminateEventDefinition_19fulbw" />
+    </endEvent>
+  </process>
+  <error id="error1" name="error1" />
+  <error id="error2" name="error2" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="end">
+      <bpmndi:BPMNEdge id="Flow_0bwqvsh_di" bpmnElement="Flow_0bwqvsh">
+        <omgdi:waypoint x="180" y="165" />
+        <omgdi:waypoint x="235" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l9e03x_di" bpmnElement="Flow_0l9e03x">
+        <omgdi:waypoint x="285" y="165" />
+        <omgdi:waypoint x="342" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i41wb3_di" bpmnElement="Flow_0i41wb3">
+        <omgdi:waypoint x="260" y="190" />
+        <omgdi:waypoint x="260" y="280" />
+        <omgdi:waypoint x="345" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i0w9kp_di" bpmnElement="Flow_1i0w9kp">
+        <omgdi:waypoint x="395" y="280" />
+        <omgdi:waypoint x="462" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05s6hmz_di" bpmnElement="Flow_05s6hmz">
+        <omgdi:waypoint x="370" y="305" />
+        <omgdi:waypoint x="370" y="390" />
+        <omgdi:waypoint x="462" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0yj3w9z_di" bpmnElement="Gateway_0yj3w9z" isMarkerVisible="true">
+        <omgdc:Bounds x="235" y="140" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1e4nwa9_di" bpmnElement="errorEndEvent">
+        <omgdc:Bounds x="342" y="147" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="332" y="190" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1rvsd4k_di" bpmnElement="Gateway_1rvsd4k" isMarkerVisible="true">
+        <omgdc:Bounds x="345" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1f02aco_di" bpmnElement="EndEvent">
+        <omgdc:Bounds x="462" y="372" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="456" y="415" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1od8gdz_di" bpmnElement="terminateEndEvent">
+        <omgdc:Bounds x="462" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

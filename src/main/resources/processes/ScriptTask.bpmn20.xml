@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="scripttask" name="ScriptTask" isExecutable="true">
+    <startEvent id="startEvent1">
+      <extensionElements>
+        <jmix:processVariables>
+          <jmix:processVariable name="users" type="entity-list">
+            <jmix:processVariableProperty name="entityName" value="bpmr2_User" />
+          </jmix:processVariable>
+        </jmix:processVariables>
+        <jmix:formData type="no-form" />
+      </extensionElements>
+      <outgoing>Flow_0w5aibf</outgoing>
+    </startEvent>
+    <sequenceFlow id="Flow_0w5aibf" sourceRef="startEvent1" targetRef="scriptTask" />
+    <scriptTask id="scriptTask" name="ScriptTask">
+      <incoming>Flow_0w5aibf</incoming>
+    </scriptTask>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="scripttask">
+      <bpmndi:BPMNEdge id="Flow_0w5aibf_di" bpmnElement="Flow_0w5aibf">
+        <omgdi:waypoint x="180" y="165" />
+        <omgdi:waypoint x="230" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06v19zr_di" bpmnElement="scriptTask">
+        <omgdc:Bounds x="230" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

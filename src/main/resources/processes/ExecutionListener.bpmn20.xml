@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="executionlistener" name="ExecutionListener" isExecutable="true">
+    <extensionElements>
+      <jmix:conditionDetails conditionSource="userTaskOutcome" />
+    </extensionElements>
+    <startEvent id="startEvent" name="StartEvent">
+      <extensionElements />
+      <outgoing>seqFlow</outgoing>
+    </startEvent>
+    <sequenceFlow id="seqFlow" name="Flow" sourceRef="startEvent" targetRef="serviceTask">
+      <extensionElements />
+    </sequenceFlow>
+    <serviceTask id="serviceTask" name="ServiceTask">
+      <extensionElements />
+      <incoming>seqFlow</incoming>
+      <outgoing>Flow_03zsqs9</outgoing>
+    </serviceTask>
+    <sequenceFlow id="Flow_03zsqs9" sourceRef="serviceTask" targetRef="scriptTask" />
+    <userTask id="scriptTask" name="UserTask" flowable:assignee="" jmix:assigneeSource="expression" jmix:assigneeValue="">
+      <incoming>Flow_03zsqs9</incoming>
+      <outgoing>Flow_0isu9gh</outgoing>
+    </userTask>
+    <sequenceFlow id="Flow_0isu9gh" sourceRef="scriptTask" targetRef="businessRule" />
+    <serviceTask id="businessRule" name="BusinessRule" flowable:type="dmn">
+      <extensionElements>
+        <jmix:conditionDetails conditionSource="userTaskOutcome" />
+        <flowable:field name="decisionTableReferenceKey">
+          <flowable:string>AmountDecisionTable</flowable:string>
+        </flowable:field>
+      </extensionElements>
+      <incoming>Flow_0isu9gh</incoming>
+      <outgoing>Flow_0aaytep</outgoing>
+    </serviceTask>
+    <sequenceFlow id="Flow_0aaytep" sourceRef="businessRule" targetRef="subProcess" />
+    <subProcess id="subProcess" name="SubProcess">
+      <incoming>Flow_0aaytep</incoming>
+      <outgoing>Flow_1dwfma4</outgoing>
+      <startEvent id="Event_0469c0c" />
+    </subProcess>
+    <endEvent id="Event_1xyxcvd">
+      <incoming>Flow_1dwfma4</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_1dwfma4" sourceRef="subProcess" targetRef="Event_1xyxcvd" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="executionlistener">
+      <bpmndi:BPMNEdge id="Flow_0fio4he_di" bpmnElement="seqFlow">
+        <omgdi:waypoint x="180" y="165" />
+        <omgdi:waypoint x="220" y="165" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="188" y="147" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03zsqs9_di" bpmnElement="Flow_03zsqs9">
+        <omgdi:waypoint x="320" y="165" />
+        <omgdi:waypoint x="380" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0isu9gh_di" bpmnElement="Flow_0isu9gh">
+        <omgdi:waypoint x="480" y="165" />
+        <omgdi:waypoint x="540" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0aaytep_di" bpmnElement="Flow_0aaytep">
+        <omgdi:waypoint x="640" y="165" />
+        <omgdi:waypoint x="700" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dwfma4_di" bpmnElement="Flow_1dwfma4">
+        <omgdi:waypoint x="840" y="160" />
+        <omgdi:waypoint x="902" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="139" y="187" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ydztxk_di" bpmnElement="serviceTask">
+        <omgdc:Bounds x="220" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ncecod_di" bpmnElement="scriptTask">
+        <omgdc:Bounds x="380" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zg5et2_di" bpmnElement="businessRule">
+        <omgdc:Bounds x="540" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1xyxcvd_di" bpmnElement="Event_1xyxcvd">
+        <omgdc:Bounds x="902" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1au8ug1_di" bpmnElement="subProcess" isExpanded="true">
+        <omgdc:Bounds x="700" y="105" width="140" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0469c0c_di" bpmnElement="Event_0469c0c">
+        <omgdc:Bounds x="748.6666666666666" y="147" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

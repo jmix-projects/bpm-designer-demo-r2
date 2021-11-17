@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="subprocess" name="Subprocess" isExecutable="true">
+    <startEvent id="startEvent1">
+      <extensionElements>
+        <jmix:processVariables>
+          <jmix:processVariable name="users" type="entity-list">
+            <jmix:processVariableProperty name="entityName" value="bpmr2_User" />
+          </jmix:processVariable>
+        </jmix:processVariables>
+        <jmix:formData type="no-form" />
+      </extensionElements>
+      <outgoing>Flow_1top37m</outgoing>
+    </startEvent>
+    <subProcess id="Activity_13ebua9">
+      <documentation />
+      <incoming>Flow_1top37m</incoming>
+      <outgoing>Flow_1rp81nz</outgoing>
+      <multiInstanceLoopCharacteristics flowable:collection="users" flowable:elementVariable="users_item" jmix:collectionSource="processVariable" jmix:collectionValue="users" />
+      <startEvent id="Event_18nag1h">
+        <outgoing>Flow_08aaako</outgoing>
+      </startEvent>
+      <sequenceFlow id="Flow_08aaako" sourceRef="Event_18nag1h" targetRef="Activity_0x1mwyr" />
+      <serviceTask id="Activity_0x1mwyr" flowable:type="dmn">
+        <incoming>Flow_08aaako</incoming>
+      </serviceTask>
+    </subProcess>
+    <sequenceFlow id="Flow_1top37m" sourceRef="startEvent1" targetRef="Activity_13ebua9" />
+    <endEvent id="Event_0a5xl57">
+      <incoming>Flow_1rp81nz</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_1rp81nz" sourceRef="Activity_13ebua9" targetRef="Event_0a5xl57" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="subprocess">
+      <bpmndi:BPMNEdge id="Flow_1rp81nz_di" bpmnElement="Flow_1rp81nz">
+        <omgdi:waypoint x="470" y="360" />
+        <omgdi:waypoint x="562" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1top37m_di" bpmnElement="Flow_1top37m">
+        <omgdi:waypoint x="35" y="360" />
+        <omgdi:waypoint x="120" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="5" y="345" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13ebua9_di" bpmnElement="Activity_13ebua9" isExpanded="true">
+        <omgdc:Bounds x="120" y="260" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_08aaako_di" bpmnElement="Flow_08aaako">
+        <omgdi:waypoint x="196" y="360" />
+        <omgdi:waypoint x="250" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_18nag1h_di" bpmnElement="Event_18nag1h">
+        <omgdc:Bounds x="160" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v1uuqe_di" bpmnElement="Activity_0x1mwyr">
+        <omgdc:Bounds x="250" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0a5xl57_di" bpmnElement="Event_0a5xl57">
+        <omgdc:Bounds x="562" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
